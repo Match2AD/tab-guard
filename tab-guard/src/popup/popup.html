@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <span class="logo">Tab Guard</span>
+    <a id="dashboard-link" class="dashboard-link">Dashboard &#8594;</a>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="active">Aktiv</button>
+    <button class="tab-btn" data-tab="closed">Geschlossen</button>
+    <button class="tab-btn" data-tab="history">History</button>
+  </div>
+
+  <div id="tab-active" class="tab-content active">
+    <div id="active-windows" class="window-list">
+      <p class="empty-state">Lade Fenster...</p>
+    </div>
+    <div id="restore-banner" class="restore-banner hidden">
+      <div class="restore-info">
+        <span class="restore-title">Letzte Session</span>
+        <span id="restore-detail" class="restore-detail"></span>
+      </div>
+      <button id="restore-all-btn" class="btn-restore">Alles wiederherstellen</button>
+    </div>
+  </div>
+
+  <div id="tab-closed" class="tab-content">
+    <div id="closed-windows" class="window-list"></div>
+    <div class="section-label">Einzelne Tabs</div>
+    <div id="closed-tabs" class="tab-list"></div>
+  </div>
+
+  <div id="tab-history" class="tab-content">
+    <div class="history-placeholder">
+      <p>Komplette 30-Tage-History im Dashboard ansehen.</p>
+      <button id="open-dashboard" class="btn-primary">Dashboard &#246;ffnen</button>
+    </div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
