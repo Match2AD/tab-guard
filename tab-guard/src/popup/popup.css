@@ -26,9 +26,15 @@ body {
   color: #fff;
 }
 
+.brand {
+  font-size: 11px;
+  font-weight: 400;
+  color: #A7A9AC;
+}
+
 .dashboard-link {
   font-size: 11px;
-  color: #6c5ce7;
+  color: #2E3192;
   cursor: pointer;
   text-decoration: none;
 }
@@ -60,7 +66,7 @@ body {
 
 .tab-btn.active {
   color: #fff;
-  border-bottom: 2px solid #6c5ce7;
+  border-bottom: 2px solid #2E3192;
 }
 
 .tab-content {
@@ -192,7 +198,7 @@ body {
 
 .closed-tab-open {
   font-size: 10px;
-  color: #6c5ce7;
+  color: #2E3192;
   cursor: pointer;
   background: none;
   border: none;
@@ -219,7 +225,7 @@ body {
 }
 
 .btn-primary {
-  background: #6c5ce7;
+  background: #2E3192;
   color: #fff;
   font-size: 12px;
   padding: 8px 16px;
@@ -229,12 +235,12 @@ body {
 }
 
 .btn-primary:hover {
-  background: #5a4bd1;
+  background: #252878;
 }
 
 .restore-banner {
-  background: #2a1a2a;
-  border: 1px solid #6c5ce7;
+  background: #1a1a30;
+  border: 1px solid #2E3192;
   border-radius: 6px;
   padding: 8px 10px;
   margin-top: 8px;

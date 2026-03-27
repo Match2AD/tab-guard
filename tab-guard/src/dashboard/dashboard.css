@@ -33,6 +33,12 @@ body {
   color: #fff;
 }
 
+.brand {
+  font-size: 14px;
+  font-weight: 400;
+  color: #A7A9AC;
+}
+
 .search-wrapper {
   flex: 0 0 300px;
 }
@@ -49,7 +55,7 @@ body {
 }
 
 .search-input:focus {
-  border-color: #6c5ce7;
+  border-color: #2E3192;
 }
 
 .search-input::placeholder {
@@ -110,7 +116,7 @@ body {
 }
 
 .btn-restore-sm {
-  background: #6c5ce7;
+  background: #2E3192;
   color: #fff;
   font-size: 10px;
   padding: 3px 10px;
@@ -120,7 +126,7 @@ body {
 }
 
 .btn-restore-sm:hover {
-  background: #5a4bd1;
+  background: #252878;
 }
 
 .snapshot-tabs {
