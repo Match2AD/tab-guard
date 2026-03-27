@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Guard &#8212; Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">Tab Guard</h1>
+      <div class="search-wrapper">
+        <input id="search-input" type="text" class="search-input" placeholder="Tabs durchsuchen...">
+      </div>
+    </header>
+
+    <main id="timeline" class="timeline">
+      <p class="empty-state">Lade History...</p>
+    </main>
+
+    <footer class="footer">
+      <span id="storage-info" class="storage-info">Speicher: berechne...</span>
+      <button id="clear-history" class="btn-danger">History l&#246;schen</button>
+    </footer>
+  </div>
+
+  <script src="dashboard.js" type="module"></script>
+</body>
+</html>
