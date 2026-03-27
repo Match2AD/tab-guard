@@ -1,0 +1,298 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 400px;
+  max-height: 520px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.brand {
+  font-size: 11px;
+  font-weight: 400;
+  color: #A7A9AC;
+}
+
+.dashboard-link {
+  font-size: 11px;
+  color: #2E3192;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dashboard-link:hover {
+  text-decoration: underline;
+}
+
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid #333;
+  padding: 0 16px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 11px;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover {
+  color: #ccc;
+}
+
+.tab-btn.active {
+  color: #fff;
+  border-bottom: 2px solid #2E3192;
+}
+
+.tab-content {
+  display: none;
+  padding: 12px 16px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.window-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.window-card {
+  background: #252542;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.window-title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.window-toggle {
+  font-size: 10px;
+  color: #888;
+}
+
+.tab-items {
+  margin-top: 8px;
+  margin-left: 8px;
+  display: none;
+}
+
+.tab-items.expanded {
+  display: block;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+}
+
+.tab-item:last-child {
+  border-bottom: none;
+}
+
+.tab-favicon {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #444;
+  flex-shrink: 0;
+}
+
+.tab-title {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.closed-window-card {
+  background: #2a1a1a;
+  border-left: 3px solid #e74c3c;
+  border-radius: 0 6px 6px 0;
+  padding: 10px;
+  margin-bottom: 6px;
+}
+
+.closed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closed-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.closed-title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.closed-time {
+  font-size: 10px;
+  color: #888;
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.closed-tab-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px;
+  background: #252542;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.closed-tab-time {
+  font-size: 10px;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.closed-tab-open {
+  font-size: 10px;
+  color: #2E3192;
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.closed-tab-open:hover {
+  text-decoration: underline;
+}
+
+.btn-restore {
+  background: #e74c3c;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-restore:hover {
+  background: #c0392b;
+}
+
+.btn-primary {
+  background: #2E3192;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #252878;
+}
+
+.restore-banner {
+  background: #1a1a30;
+  border: 1px solid #2E3192;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restore-banner.hidden {
+  display: none;
+}
+
+.restore-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.restore-title {
+  font-size: 11px;
+  color: #ccc;
+}
+
+.restore-detail {
+  font-size: 10px;
+  color: #888;
+}
+
+.section-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 1px;
+  margin: 10px 0 6px;
+}
+
+.empty-state {
+  color: #666;
+  text-align: center;
+  padding: 20px;
+}
+
+.history-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+}
+
+.history-placeholder p {
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
+}
