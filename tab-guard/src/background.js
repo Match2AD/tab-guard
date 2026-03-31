@@ -25,10 +25,26 @@ function isTrackableWindow(win) {
 
 /**
  * Builds an immutable snapshot object from a Chrome window with tabs populated.
+ * Includes tab group metadata so groups can be recreated on restore.
  * @param {{ id: number, tabs: Array }} win
- * @returns {{ id: string, windowId: number, timestamp: number, tabs: Array }}
+ * @returns {Promise<{ id: string, windowId: number, timestamp: number, tabs: Array, groups: Array }>}
  */
-function buildWindowSnapshot(win) {
+async function buildWindowSnapshot(win) {
+  let groups = [];
+  try {
+    const tabGroups = await chrome.tabGroups.query({ windowId: win.id });
+    groups = tabGroups.map((g) => ({
+      id: g.id,
+      title: g.title || '',
+      color: g.color,
+      collapsed: g.collapsed,
+    }));
+  } catch (_) {
+    // tabGroups API unavailable — older Chrome or missing permission
+  }
+
+  const noGroup = chrome.tabGroups?.TAB_ID_NONE ?? -1;
+
   return {
     id: generateId(),
     windowId: win.id,
@@ -39,7 +55,9 @@ function buildWindowSnapshot(win) {
       favIconUrl: tab.favIconUrl || '',
       index: tab.index,
       pinned: tab.pinned || false,
+      groupId: tab.groupId != null && tab.groupId !== noGroup ? tab.groupId : null,
     })),
+    groups,
   };
 }
 
@@ -54,7 +72,7 @@ export async function snapshotAllWindows() {
   for (const win of windows) {
     if (!isTrackableWindow(win)) continue;
     if (!win.tabs || win.tabs.length === 0) continue;
-    const snapshot = buildWindowSnapshot(win);
+    const snapshot = await buildWindowSnapshot(win);
     await saveSnapshot(snapshot);
   }
 }
@@ -76,6 +94,13 @@ function debouncedSnapshot() {
 chrome.tabs.onRemoved.addListener(() => {
   debouncedSnapshot();
 });
+
+// Re-snapshot when tab groups change so group metadata stays current.
+if (chrome.tabGroups) {
+  chrome.tabGroups.onCreated.addListener(debouncedSnapshot);
+  chrome.tabGroups.onRemoved.addListener(debouncedSnapshot);
+  chrome.tabGroups.onUpdated.addListener(debouncedSnapshot);
+}
 
 chrome.tabs.onUpdated.addListener((_tabId, changeInfo) => {
   if (changeInfo.url || changeInfo.title) {
