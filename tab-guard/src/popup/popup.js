@@ -88,6 +88,42 @@ async function loadActiveWindows() {
   }
 }
 
+// --- Window Restore with Groups ---
+
+/**
+ * Creates a new window from a snapshot and recreates its tab groups.
+ * @param {{ tabs: Array, groups: Array }} snap
+ */
+async function restoreWindowWithGroups(snap) {
+  const newWin = await chrome.windows.create({ url: snap.tabs.map((t) => t.url) });
+
+  if (!snap.groups || snap.groups.length === 0) return;
+
+  // Build map: original groupId -> tab indices within this snapshot
+  const groupTabIndices = new Map();
+  snap.tabs.forEach((tab, i) => {
+    if (tab.groupId !== null && tab.groupId !== undefined) {
+      if (!groupTabIndices.has(tab.groupId)) groupTabIndices.set(tab.groupId, []);
+      groupTabIndices.get(tab.groupId).push(i);
+    }
+  });
+
+  for (const [origGroupId, indices] of groupTabIndices.entries()) {
+    const groupInfo = snap.groups.find((g) => g.id === origGroupId);
+    if (!groupInfo) continue;
+
+    const tabIds = indices.map((i) => newWin.tabs?.[i]?.id).filter(Boolean);
+    if (tabIds.length === 0) continue;
+
+    const newGroupId = await chrome.tabs.group({ tabIds });
+    await chrome.tabGroups.update(newGroupId, {
+      title: groupInfo.title || '',
+      color: groupInfo.color,
+      collapsed: groupInfo.collapsed,
+    });
+  }
+}
+
 // --- Render Closed Windows ---
 
 async function loadClosedWindows() {
@@ -112,7 +148,7 @@ async function loadClosedWindows() {
       const btn = el('button', {
         className: 'btn-restore',
         textContent: 'Wiederherstellen',
-        onClick: () => chrome.windows.create({ url: snap.tabs.map((t) => t.url) }),
+        onClick: () => restoreWindowWithGroups(snap),
       });
 
       const card = el('div', { className: 'closed-window-card' }, [
@@ -162,7 +198,7 @@ async function loadRestoreBanner() {
 
   restoreBtn.addEventListener('click', () => {
     for (const snap of closed) {
-      chrome.windows.create({ url: snap.tabs.map((t) => t.url) });
+      restoreWindowWithGroups(snap);
     }
   });
 }
