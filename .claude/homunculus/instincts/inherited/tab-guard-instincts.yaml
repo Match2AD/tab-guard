@@ -1,0 +1,521 @@
+# Instincts generated from https://github.com/Match2AD/tab-guard
+# Generated: 2026-03-31T05:44:20.286Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: tab-guard-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat
+
+## Evidence
+
+- 11 commits analyzed
+- Detected conventional commit pattern
+- Examples: feat: add tab group save and restore support, feat: add Match2AD branding, README, and prepare for public release
+
+---
+id: tab-guard-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Commit Length
+
+## Action
+
+Write moderate-length commit messages (~54 characters)
+
+## Evidence
+
+- Average commit message length: 54 chars
+- Based on 11 commits
+
+---
+id: tab-guard-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: tab-guard-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: tab-guard-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: tab-guard-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: tab-guard-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.js
+
+## Evidence
+
+- File pattern: *.test.js
+- Consistent across test files
+
+---
+id: tab-guard-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~30x per month
+- Files: **/*.test.*
+
+---
+id: tab-guard-workflow-refactoring
+trigger: "when refactoring code"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Workflow Refactoring
+
+## Action
+
+Follow the refactoring workflow:
+1. Ensure tests pass before refactor
+2. Refactor code structure
+3. Verify tests still pass
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~8x per month
+- Files: src/**/*
+
+---
+id: tab-guard-workflow-add-new-module-with-tests
+trigger: "when doing add new module with tests"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Workflow Add New Module With Tests
+
+## Action
+
+Follow the add-new-module-with-tests workflow:
+1. Create new module file in src/ (e.g., src/utils.js, src/storage.js)
+2. Create corresponding test file in tests/ (e.g., tests/utils.test.js, tests/storage.test.js)
+3. Implement module functionality
+4. Write unit tests for all exported functions
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: tab-guard/src/utils.js, tab-guard/tests/utils.test.js, tab-guard/src/storage.js
+
+---
+id: tab-guard-workflow-feature-development-ui-logic-css-html
+trigger: "when doing feature development ui logic css html"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Workflow Feature Development Ui Logic Css Html
+
+## Action
+
+Follow the feature-development-ui-logic-css-html workflow:
+1. Create or update JavaScript logic file for the feature (e.g., src/popup/popup.js, src/dashboard/dashboard.js)
+2. Create or update HTML file for the feature (e.g., src/popup/popup.html, src/dashboard/dashboard.html)
+3. Create or update CSS file for the feature (e.g., src/popup/popup.css, src/dashboard/dashboard.css)
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: tab-guard/src/popup/popup.js, tab-guard/src/popup/popup.html, tab-guard/src/popup/popup.css
+
+---
+id: tab-guard-workflow-update-extension-branding-and-assets
+trigger: "when doing update extension branding and assets"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Match2AD/tab-guard
+---
+
+# Tab Guard Workflow Update Extension Branding And Assets
+
+## Action
+
+Follow the update-extension-branding-and-assets workflow:
+1. Update icon PNG files in icons/ directory
+2. Update manifest.json with new metadata (e.g., description, permissions, URLs)
+3. Update CSS/HTML files for branding (e.g., colors, headers)
+4. Update or add README.md and .gitignore
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: tab-guard/icons/icon128.png, tab-guard/icons/icon16.png, tab-guard/icons/icon48.png
+
+---
+id: tab-guard-instinct-file-naming-camelCase
+trigger: "When creating a new file (JavaScript source or test)"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct File Naming CamelCase
+
+## Action
+
+Name the file using camelCase (e.g., utils.js, storage.test.js)
+
+## Evidence
+
+- Pattern in files: tab-guard/src/utils.js, tab-guard/tests/utils.test.js
+
+---
+id: tab-guard-instinct-function-naming-camelCase
+trigger: "When defining a function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Function Naming CamelCase
+
+## Action
+
+Name the function using camelCase (e.g., getTabInfo, saveTabs)
+
+## Evidence
+
+- Pattern in code: JavaScript language, camelCase function naming
+
+---
+id: tab-guard-instinct-class-naming-pascalCase
+trigger: "When defining a class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Class Naming PascalCase
+
+## Action
+
+Name the class using PascalCase (e.g., TabManager)
+
+## Evidence
+
+- Pattern in code: JavaScript language, PascalCase class naming
+
+---
+id: tab-guard-instinct-constant-naming-screaming-snake-case
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Constant Naming Screaming Snake Case
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE (e.g., MAX_TABS)
+
+## Evidence
+
+- Pattern in code: JavaScript language, SCREAMING_SNAKE_CASE constants
+
+---
+id: tab-guard-instinct-import-style-relative
+trigger: "When importing a module"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Import Style Relative
+
+## Action
+
+Use relative import paths (e.g., import { foo } from './utils')
+
+## Evidence
+
+- Pattern in code: importStyle is relative
+
+---
+id: tab-guard-instinct-export-style-named
+trigger: "When exporting functions or variables from a module"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Export Style Named
+
+## Action
+
+Use named exports (e.g., export function foo() {})
+
+## Evidence
+
+- Pattern in code: exportStyle is named
+
+---
+id: tab-guard-instinct-test-file-pattern
+trigger: "When creating a test file"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Test File Pattern
+
+## Action
+
+Name the test file with the pattern *.test.js (e.g., utils.test.js)
+
+## Evidence
+
+- Pattern in files: tab-guard/tests/utils.test.js, tab-guard/tests/storage.test.js
+
+---
+id: tab-guard-instinct-unit-tests-for-modules
+trigger: "When adding a new module in src/"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Unit Tests For Modules
+
+## Action
+
+Write a corresponding unit test file in tests/ for all exported functions
+
+## Evidence
+
+- Workflow: add-new-module-with-tests
+- Pattern in files: tab-guard/src/utils.js, tab-guard/tests/utils.test.js
+
+---
+id: tab-guard-instinct-commit-conventional-feat-prefix
+trigger: "When committing a new feature or significant change"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Commit Conventional Feat Prefix
+
+## Action
+
+Use the conventional commit format with 'feat:' prefix (e.g., feat: add popup logic)
+
+## Evidence
+
+- Seen in commit: feat: add tab group save and restore support
+- Pattern in commit examples
+
+---
+id: tab-guard-instinct-commit-length-50-chars
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Commit Length 50 Chars
+
+## Action
+
+Keep the commit message concise, around 50 characters
+
+## Evidence
+
+- Pattern: average commit length is 54 characters
+
+---
+id: tab-guard-instinct-add-new-module-with-tests
+trigger: "When introducing new isolated functionality (e.g., utility or storage module)"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Add New Module With Tests
+
+## Action
+
+Create a new module file in src/ and a corresponding test file in tests/, then implement and test all exported functions
+
+## Evidence
+
+- Workflow: add-new-module-with-tests
+- Pattern in files: tab-guard/src/utils.js, tab-guard/tests/utils.test.js
+
+---
+id: tab-guard-instinct-feature-development-ui-logic-css-html
+trigger: "When adding a new UI feature or view (e.g., popup, dashboard)"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Feature Development Ui Logic Css Html
+
+## Action
+
+Create or update JavaScript, HTML, and CSS files for the feature in the relevant component folder
+
+## Evidence
+
+- Workflow: feature-development-ui-logic-css-html
+- Pattern in files: tab-guard/src/popup/popup.js, tab-guard/src/popup/popup.html, tab-guard/src/popup/popup.css
+
+---
+id: tab-guard-instinct-update-extension-branding-and-assets
+trigger: "When changing extension branding, icons, or preparing for a release"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: Match2AD/tab-guard
+---
+
+# Tab Guard Instinct Update Extension Branding And Assets
+
+## Action
+
+Update icon PNG files, manifest.json, CSS/HTML for branding, and documentation files
+
+## Evidence
+
+- Workflow: update-extension-branding-and-assets
+- Pattern in files: tab-guard/icons/icon128.png, tab-guard/manifest.json, tab-guard/README.md
+
