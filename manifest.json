@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Tab Guard by Match2AD",
-  "version": "1.0.0",
-  "description": "Sichert automatisch alle Browser-Fenster und Tabs und stellt sie nach Abstürzen oder Neustarts wieder her. Von Match2AD.",
-  "homepage_url": "https://www.match2ad.de",
-  "permissions": ["tabs", "storage", "alarms"],
+  "version": "1.1.0",
+  "description": "Sichert automatisch Browser-Fenster, Tabs und Tab-Gruppen und stellt sie nach Abstürzen oder Neustarts wieder her.",
+  "homepage_url": "https://match2ad.de",
+  "permissions": ["tabs", "storage", "alarms", "tabGroups"],
   "background": {
     "service_worker": "src/background.js",
     "type": "module"

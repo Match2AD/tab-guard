@@ -3,26 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <title>Tab Guard &#8212; Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="logo">Tab Guard <span class="brand">by Match2AD</span></h1>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span class="material-symbols-outlined header-icon">shield</span>
+      <h1 class="logo">Tab Guard</h1>
+    </div>
+    <div class="header-right">
+      <nav class="header-nav">
+        <a class="nav-link active">Dashboard</a>
+        <a id="settings-link" class="nav-link">Einstellungen</a>
+      </nav>
       <div class="search-wrapper">
-        <input id="search-input" type="text" class="search-input" placeholder="Tabs durchsuchen...">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input id="search-input" type="text" class="search-input" placeholder="Suche...">
       </div>
-    </header>
+    </div>
+  </header>
 
+  <div class="container">
+    <!-- Bento Stats Grid -->
+    <section class="bento-grid">
+      <div class="bento-card bento-wide stat-windows">
+        <div class="bento-top">
+          <span class="bento-label">Aktive Fenster</span>
+          <span class="material-symbols-outlined bento-icon">window</span>
+        </div>
+        <div class="bento-bottom">
+          <span id="stat-windows" class="bento-value">0</span>
+        </div>
+      </div>
+      <div class="bento-card stat-tabs">
+        <span class="material-symbols-outlined bento-icon-center">tab</span>
+        <span id="stat-tabs" class="bento-value-center">0</span>
+        <span class="bento-label-center">Tabs</span>
+      </div>
+      <div class="bento-card stat-groups">
+        <div class="bento-top">
+          <span class="bento-label">Gruppen</span>
+          <span class="material-symbols-outlined bento-icon">group_work</span>
+        </div>
+        <span id="stat-groups" class="bento-value">0</span>
+      </div>
+      <div class="bento-card bento-wide stat-storage">
+        <div class="bento-top">
+          <div>
+            <span class="bento-label">Speicherbelegung</span>
+            <span id="stat-storage" class="bento-value-inline">0 KB</span>
+          </div>
+          <span class="bento-label-right">Max 10 MB</span>
+        </div>
+        <div class="storage-bar">
+          <div id="storage-fill" class="storage-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter + Restore -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <h2 class="toolbar-title">Tab Historie</h2>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Alle</button>
+          <button class="filter-btn" data-filter="grouped">Mit Gruppen</button>
+          <button class="filter-btn" data-filter="closed">Geschlossen</button>
+        </div>
+      </div>
+      <button id="restore-all" class="btn-restore-all hidden">
+        <span class="material-symbols-outlined btn-icon">restore</span>
+        Session wiederherstellen
+      </button>
+    </section>
+
+    <!-- Timeline -->
     <main id="timeline" class="timeline">
       <p class="empty-state">Lade History...</p>
     </main>
-
-    <footer class="footer">
-      <span id="storage-info" class="storage-info">Speicher: berechne...</span>
-      <button id="clear-history" class="btn-danger">History l&#246;schen</button>
-    </footer>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span id="storage-info" class="storage-label">Speicher: berechne...</span>
+      </div>
+      <div class="footer-right">
+        <button id="clear-history" class="btn-danger">
+          <span class="material-symbols-outlined btn-icon-sm">delete_sweep</span>
+          History l&#246;schen
+        </button>
+        <div class="footer-divider"></div>
+        <span class="footer-copy">&copy; Tab Guard by</span>
+        <a href="https://match2ad.de" target="_blank" class="brand-link">match2ad.de</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="dashboard.js" type="module"></script>
 </body>
